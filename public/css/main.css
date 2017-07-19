@@ -1,0 +1,26 @@
+#cart-header {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    margin: 20px;
+}
+
+.button-image {
+    margin-right: 10px;
+}
+
+#price-amount {
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 50px;
+}
+
+#price-currency {
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 50px;
+}
+
+.error {
+    color: red;
+}
