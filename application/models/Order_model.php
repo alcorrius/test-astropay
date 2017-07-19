@@ -30,10 +30,14 @@ class Order_model extends CI_Model
     public function update_order($id, $status_id, $transaction_id, $confirm_id = null, $confirm_transaction_id = null)
     {
         $data = array();
-        $data['status_id'] = $status_id;
-        $data['transaction_id'] = $transaction_id;
-        $data['confirm_id'] = $confirm_id;
-        $data['confirm_transaction_id'] = $confirm_transaction_id;
+        if (!empty($status_id)){
+            $data['status_id'] = $status_id;
+            $data['transaction_id'] = $transaction_id;
+        }
+        if (!empty($confirm_id)) {
+            $data['confirm_id'] = $confirm_id;
+            $data['confirm_transaction_id'] = $confirm_transaction_id;
+        }
 
         $this->db->where('id', $id);
         return $this->db->update($this->table, $data);
