@@ -52,7 +52,7 @@ class Payment extends CI_Controller
             if (!empty($order_id)) {
                 $aps = new AstroPayStreamline();
 
-                $result = $aps->newinvoice($order_id, $amount, 'TE', 'BR', $user_id, $user_cpf, $user_name, $user_email, $currency, null, null, null, null, null, null, 'http://192.168.1.103/payment/result', 'http://192.168.1.103/payment/confirm');
+                $result = $aps->newinvoice($order_id, $amount, 'TE', 'BR', $user_id, $user_cpf, $user_name, $user_email, $currency, null, null, null, null, null, null, 'http://ec2-52-59-207-204.eu-central-1.compute.amazonaws.com/astropay/payment/result', 'http://ec2-52-59-207-204.eu-central-1.compute.amazonaws.com/astropay/payment/confirm');
                 $result_encoded = json_decode($result);
 
                 if ($result_encoded->status == 0) {
@@ -128,7 +128,7 @@ class Payment extends CI_Controller
             } else {
                 $this->order_model->update_order($order_id, null, null, $result, $transaction_id);
 
-                log_message('notification', "Confirmation of order {$order_id} was success: {$data['message']}");
+                log_message('info', "Confirmation of order {$order_id} was success: {$data['message']}");
             }
         } else {
             log_message('error', "Confirmation of order {$order_id} was failed: wrong control value");
